@@ -1,0 +1,29 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/learning?useUnicode=true&characterEncoding=utf-8&useSSL=false #由于5.7之后的mysql进行过一些安全加固，所以不加这个会报一个安全加固错；所以需要加上
+    username: root
+    password: 12345
+
+
+eureka:
+  client:
+    # 是否从EurekaServer抓取已有的注册信息，默认为true，单节点无所谓
+    # 集群必须设置为 true，才能配置ribbon使用
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      #defaultZone: http://localhost:7001/eureka     #表示向具体的哪个Eureka来注册我们目前的这个module
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群版Eureka
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true   #鼠标放置在Eureka可视化界面的payment微服务名称上面会显示IP地址
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包

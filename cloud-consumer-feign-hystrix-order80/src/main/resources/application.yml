@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false     #表示此消费order微服务不注册进入Eureka，一般都是服务提供者注册进入到Eureka的，
+    service-url:  #虽然没有注册进入到Eureka，但是这个Order还要通过EUreka来找到服务提供者的位置的；所以下面还要指明EUreka的服务
+      defaultZone: http://eureka7001.com:7001/eureka/  #单机的Eureka注册，并没有使用Eureka集群
+
+#用于服务降级，在注解@FeignClient注解中添加fallbackFactory属性；需要对下面的属性进行开启
+feign:
+  hystrix:
+    enabled: true  #在Feign中开启Hystrix

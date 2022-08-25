@@ -1,0 +1,12 @@
+#此服务的端口号
+server:
+  port: 8004
+
+  #表示此微服务的微服务名称，并以zookeeper作为注册中心；
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      connect-string: 192.168.111.114:2181
+
