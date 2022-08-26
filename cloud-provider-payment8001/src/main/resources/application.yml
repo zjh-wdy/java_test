@@ -20,7 +20,8 @@ eureka:
     register-with-eureka: true
     service-url:
       #defaultZone: http://localhost:7001/eureka     #表示向具体的哪个Eureka来注册我们目前的这个module
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群版Eureka
+      defaultZone: http://eureka7001.com:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群版Eureka
   instance:
     instance-id: payment8001
     prefer-ip-address: true   #鼠标放置在Eureka可视化界面的payment微服务名称上面会显示IP地址
