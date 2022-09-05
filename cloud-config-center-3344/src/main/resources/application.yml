@@ -1,0 +1,36 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center  #注册进Eureka的服务器的微服务名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zjh-wdy/springcloud-config.git  #GitHub上面的git仓库名字 这里可以写https地址跟ssh地址，https地址需要配置username和password
+          search-paths:
+            - springcloud-config  #搜索的github目录 也就是git仓库的名称
+#          username: 3189972044@qq.ocm
+#          password: ZXXXX11zjh
+      #读取的github分支
+      label: main  # 以前是master
+  #rabbitmq相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka #单机版
+      #defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka #集群版
+
+#rabbitMQ 的相关配置，暴露刷新配置的端点
+management:
+  endpoints:  #暴露bus刷新配置的端点
+    web:
+      exposure:
+        include: 'bus-refresh'    #特别注意到这里如果有配置刷新监控什么的，都是需要在pom中配置上spring-boot-starter-actuator的gav的，这样才会有图形监控页面

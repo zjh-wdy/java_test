@@ -18,12 +18,17 @@
         <module name="cloud-consumerzk-order80" />
         <module name="cloud-consumerconsul-order80" />
         <module name="cloud-consumer-hystrix-dashboard9001" />
+        <module name="cloud-config-center-3344" />
         <module name="cloud-consumer-openfeign-order80" />
         <module name="cloud-gateway-gateway-9527" />
         <module name="cloud-consumer-order80" />
         <module name="cloud-provider-hystrix-payment8001" />
+        <module name="cloud-config-client-3355" />
+        <module name="cloud-config-client-3377" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="cloud-config-client-3366" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
